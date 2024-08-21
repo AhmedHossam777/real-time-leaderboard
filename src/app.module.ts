@@ -5,11 +5,9 @@ import { UserModule } from './user/user.module';
 import { ScoreModule } from './score/score.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { GameModule } from './game/game.module';
-import { RedisModule } from './redis.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ConfigModule } from '@nestjs/config';
-import * as process from 'node:process';
 
 @Module({
 	imports: [
@@ -17,7 +15,6 @@ import * as process from 'node:process';
 		ScoreModule,
 		LeaderboardModule,
 		GameModule,
-		RedisModule,
 		ConfigModule.forRoot(),
 		TypeOrmModule.forRoot({
 			type: 'postgres',
