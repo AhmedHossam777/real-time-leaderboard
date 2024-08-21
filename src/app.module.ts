@@ -16,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 		ScoreModule,
 		LeaderboardModule,
 		GameModule,
+		AuthModule,
 		ConfigModule.forRoot(),
 		TypeOrmModule.forRoot({
 			type: 'postgres',
