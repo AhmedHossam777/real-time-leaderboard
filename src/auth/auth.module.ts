@@ -6,10 +6,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { RedisService } from '../redis/redis.service';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { JWTAuthGuard } from './guards/auth.guard';
 
 @Module({
 	controllers: [AuthController],
-	providers: [AuthService, UserService, JwtService, RedisService],
+	providers: [
+		AuthService,
+		UserService,
+		JwtService,
+		RedisService,
+		JwtStrategy,
+		JWTAuthGuard,
+	],
 	imports: [TypeOrmModule.forFeature([User])],
 })
 export class AuthModule {}
