@@ -4,7 +4,7 @@ import { UserController } from './user.controller';
 import { User } from './entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Score } from '../score/entities/score.entity';
-import { RedisModule } from '../redis.module';
+import { RedisModule } from '../redis/redis.module';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 
