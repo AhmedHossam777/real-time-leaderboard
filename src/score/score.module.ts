@@ -3,10 +3,9 @@ import { ScoreService } from './score.service';
 import { ScoreController } from './score.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Score } from './entities/score.entity';
-import { Game } from '../game/entities/game.entity';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([Score, Game])],
+	imports: [TypeOrmModule.forFeature([Score])],
 
 	controllers: [ScoreController],
 	providers: [ScoreService],
