@@ -1,6 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Score }from '../../score/entities/score.entity'
-
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	CreateDateColumn,
+	UpdateDateColumn,
+	OneToMany,
+} from 'typeorm';
+import { Score } from '../../score/entities/score.entity';
 
 @Entity()
 export class User {
@@ -8,7 +14,7 @@ export class User {
 	id: number;
 
 	@Column({ unique: true })
-	username: string;
+	email: string;
 
 	@Column()
 	password: string;

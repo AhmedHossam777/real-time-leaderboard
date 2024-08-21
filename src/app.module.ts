@@ -22,9 +22,10 @@ import * as process from 'node:process';
 		TypeOrmModule.forRoot({
 			type: 'postgres',
 			database: process.env.DB_NAME,
-			port: process.env.DB_HOST as any,
+			port: process.env.DB_PORT as any,
 			username: process.env.DB_USERNAME,
 			password: process.env.DB_PASSWORD,
+			host: process.env.DB_HOST,
 			synchronize: true,
 			autoLoadEntities: true,
 		}),
