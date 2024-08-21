@@ -24,7 +24,7 @@ export class UserService {
 	}
 
 	async find(email: string) {
-		return await this.repo.find({ where: { email } });
+		return await this.repo.findOneBy({ email });
 	}
 
 	async update(id: number, updateUserDto: UpdateUserDto) {
