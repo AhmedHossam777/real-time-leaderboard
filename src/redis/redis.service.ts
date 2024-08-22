@@ -19,4 +19,12 @@ export class RedisService {
 	async deleteRefreshToken(userId: number) {
 		await this.client.del(`${userId}`);
 	}
+
+	async addScore(
+		leaderboardKey: string,
+		scoreValue: number,
+		scoreMember: string,
+	) {
+		return this.client.zadd(leaderboardKey, scoreValue, scoreMember);
+	}
 }

@@ -14,7 +14,7 @@ export class Score {
 	id: number;
 
 	@Column()
-	value: number;
+	score: number;
 
 	@ManyToOne(() => User, (user) => user.scores)
 	user: User;
