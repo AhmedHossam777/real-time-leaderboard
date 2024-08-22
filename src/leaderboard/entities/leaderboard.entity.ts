@@ -4,8 +4,12 @@ import {
 	Column,
 	CreateDateColumn,
 	ManyToOne,
+	OneToOne,
+	JoinColumn,
 } from 'typeorm';
 import { Game } from '../../game/entities/game.entity';
+import { User } from '../../user/entities/user.entity';
+import { Score } from '../../score/entities/score.entity';
 
 @Entity()
 export class Leaderboard {
@@ -15,11 +19,15 @@ export class Leaderboard {
 	@Column()
 	gameId: number;
 
-	@Column('json')
-	data: any;
-
 	@ManyToOne(() => Game)
 	game: Game;
+
+	@OneToOne(() => User)
+	@JoinColumn()
+	user: User;
+
+	@ManyToOne(() => Score)
+	score: Score;
 
 	@CreateDateColumn()
 	snapshotDate: Date;

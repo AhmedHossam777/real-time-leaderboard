@@ -5,8 +5,10 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	OneToMany,
+	OneToOne,
 } from 'typeorm';
 import { Score } from '../../score/entities/score.entity';
+import { Leaderboard } from '../../leaderboard/entities/leaderboard.entity';
 
 @Entity()
 export class User {
@@ -30,4 +32,7 @@ export class User {
 
 	@UpdateDateColumn()
 	updatedAt: Date;
+
+	@OneToOne(() => Leaderboard, (leaderboard) => leaderboard.user)
+	leaderboard: Leaderboard;
 }
