@@ -9,19 +9,14 @@ export class RedisService {
 	}
 
 	async setRefreshToken(userId: number, refreshToken: string) {
-		await this.client.set(
-			`refreshToken: ${userId}`,
-			refreshToken,
-			'EX',
-			7 * 24 * 60 * 60,
-		);
+		await this.client.set(`${userId}`, refreshToken, 'EX', 7 * 24 * 60 * 60);
 	}
 
 	async getRefreshToken(userId: number) {
-		return this.client.get(`refreshToken: ${userId}`);
+		return this.client.get(`${userId}`);
 	}
 
 	async deleteRefreshToken(userId: number) {
-		await this.client.del(`refreshToken: ${userId}`);
+		await this.client.del(`${userId}`);
 	}
 }
