@@ -78,4 +78,19 @@ export class AuthService {
 			refreshToken,
 		};
 	}
+
+	async refreshToken(refreshToken: string) {
+		const payload = this.jwtService.verify(refreshToken, {
+			secret: process.env.REFRESH_TOKEN_SECRET,
+		});
+		const storedToken = await this.redisService.getRefreshToken(payload.userId);
+
+		if (storedToken !== refreshToken) {
+			throw new UnauthorizedException('invalid refresh token');
+		}
+
+		const { accessToken } = await this.generateTokens(payload.userId);
+
+		return { accessToken };
+	}
 }
