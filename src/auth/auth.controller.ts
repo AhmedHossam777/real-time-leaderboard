@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { JWTAuthGuard } from './guards/auth.guard';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { User } from '../user/entities/user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -31,7 +33,7 @@ export class AuthController {
 
 	@UseGuards(JWTAuthGuard)
 	@Post('/logout')
-	async logout(@Req() req: any) {
-		return this.authService.signout(req.user.id);
+	async logout(@CurrentUser() user: User) {
+		return this.authService.signout(user.id);
 	}
 }
