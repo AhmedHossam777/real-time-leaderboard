@@ -13,7 +13,10 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JWTAuthGuard } from '../auth/guards/auth.guard';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { UserDto } from './dto/user.dto';
 
+@Serialize(UserDto)
 @UseGuards(JWTAuthGuard)
 @Controller('user')
 export class UserController {
