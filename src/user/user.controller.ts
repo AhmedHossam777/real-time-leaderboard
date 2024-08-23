@@ -15,6 +15,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { JWTAuthGuard } from '../auth/guards/auth.guard';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dto/user.dto';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { User } from './entities/user.entity';
 
 @Serialize(UserDto)
 @UseGuards(JWTAuthGuard)
@@ -45,5 +47,10 @@ export class UserController {
 	@Delete(':id')
 	remove(@Param('id') id: string) {
 		return this.userService.remove(+id);
+	}
+
+	@Get('/ranking')
+	getRanking(@Query('gameName') gameName: string, @CurrentUser() user: User) {
+		return this.userService.getRanking(gameName, user.username);
 	}
 }

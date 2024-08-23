@@ -47,4 +47,17 @@ export class RedisService {
 		}
 		return leaderboard;
 	}
+
+	async getRanking(leaderboardKey: string, username: string) {
+		const rank = await this.client.zrevrank(leaderboardKey, `user:${username}`);
+		if (rank === null) {
+			throw new Error('User not found in leaderboard');
+		}
+		return rank + 1;
+	}
+
+	async getLeaderboard(gameName: string) {
+		const leaderboardKey = `leaderboard:game: ${gameName}`;
+		return this.client.zrevrange(leaderboardKey, 0, -1, 'WITHSCORES');
+	}
 }

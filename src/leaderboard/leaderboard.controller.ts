@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { LeaderboardService } from './leaderboard.service';
 
 @Controller('leaderboard')
@@ -8,5 +8,10 @@ export class LeaderboardController {
 	@Get()
 	async getHighestScores() {
 		return await this.leaderboardService.getHighestScores();
+	}
+
+	@Get('/game')
+	async getLeaderboard(@Query('gameName') gameName: string) {
+		return await this.leaderboardService.getLeaderboard(gameName);
 	}
 }

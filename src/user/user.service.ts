@@ -4,10 +4,14 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
+import { RedisService } from '../redis/redis.service';
 
 @Injectable()
 export class UserService {
-	constructor(@InjectRepository(User) private repo: Repository<User>) {}
+	constructor(
+		@InjectRepository(User) private repo: Repository<User>,
+		private redisService: RedisService,
+	) {}
 
 	async create(createUserDto: CreateUserDto) {
 		const user = this.repo.create(createUserDto);
@@ -36,5 +40,26 @@ export class UserService {
 		if (!user) throw new NotFoundException('user not found');
 		await this.repo.remove(user);
 		return 'user removed';
+	}
+
+	async getRanking(gameName: string, username: string) {
+		console.log('getRanking called with:', { gameName, username });
+
+		if (!gameName || !username) {
+			console.error('Invalid parameters:', { gameName, username });
+			throw new NotFoundException('Invalid parameters');
+		}
+
+		const leaderboardKey = `leaderboard:game: ${gameName}`;
+		console.log('leaderboardKey:', leaderboardKey);
+
+		try {
+			const rank = await this.redisService.getRanking(leaderboardKey, username);
+			console.log('Rank:', rank);
+			return rank;
+		} catch (error) {
+			console.error('Error fetching rank:', error);
+			throw new NotFoundException('user not found');
+		}
 	}
 }
