@@ -36,4 +36,15 @@ export class RedisService {
 	async getHighestScore(leaderboardKey: string) {
 		return this.client.zrevrange(leaderboardKey, 0, 0, 'WITHSCORES');
 	}
+
+	async getAllLeaderboardHighest() {
+		const keys = await this.getAllKeys();
+		const leaderboard = [];
+		for (const key of keys) {
+			const [game] = key.split(':').slice(-1);
+			const [user, score] = await this.getHighestScore(key);
+			leaderboard.push({ game, user, score });
+		}
+		return leaderboard;
+	}
 }
