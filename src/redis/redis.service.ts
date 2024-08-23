@@ -27,4 +27,13 @@ export class RedisService {
 	) {
 		return this.client.zadd(leaderboardKey, scoreValue, scoreMember);
 	}
+
+	async getAllKeys() {
+		return this.client.keys('leaderboard:game:*');
+		// leaderboard:game:valorant
+	}
+
+	async getHighestScore(leaderboardKey: string) {
+		return this.client.zrevrange(leaderboardKey, 0, 0, 'WITHSCORES');
+	}
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateScoreDto } from './dto/create-score.dto';
-import { UpdateScoreDto } from './dto/update-score.dto';
 import { Score } from './entities/score.entity';
 import { DataSource, Repository } from 'typeorm';
 import { RedisService } from '../redis/redis.service';
@@ -16,14 +15,14 @@ export class ScoreService {
 		private readonly gameService: GameService,
 	) {}
 
-	async submitScore(createScoreDto: CreateScoreDto, gameId: number) {
+	async submitScore(createScoreDto: CreateScoreDto, gameName: string) {
 		const queryRunner = this.dataSource.createQueryRunner();
 		await queryRunner.connect();
 		await queryRunner.startTransaction();
 
 		try {
 			// Normal postgres
-			createScoreDto.game = await this.gameService.findOne(gameId);
+			createScoreDto.game = await this.gameService.findOneByName(gameName);
 			const score = this.scoreRepo.create({
 				score: createScoreDto.score,
 				user: createScoreDto.user,
@@ -33,15 +32,17 @@ export class ScoreService {
 			await queryRunner.manager.save(score);
 
 			// Redis
-			const leaderboard = `leaderboard:game: ${createScoreDto.game.id}`;
+			const leaderboard = `leaderboard:game: ${gameName}`;
+
 			await this.redisService.addScore(
 				leaderboard,
 				createScoreDto.score,
-				`user:${createScoreDto.user.id}`,
+				`user:${createScoreDto.user.username}`,
 			);
 
 			await queryRunner.commitTransaction();
 		} catch (e) {
+			console.log(e);
 			await queryRunner.rollbackTransaction();
 			throw new Error('Transaction failed. Rolled back.');
 		} finally {
@@ -51,19 +52,9 @@ export class ScoreService {
 		return 'score submitted';
 	}
 
-	findAll() {
-		return `This action returns all score`;
-	}
-
-	findOne(id: number) {
-		return `This action returns a #${id} score`;
-	}
-
-	update(id: number, updateScoreDto: UpdateScoreDto) {
-		return `This action updates a #${id} score`;
-	}
-
-	remove(id: number) {
-		return `This action removes a #${id} score`;
+	async getHighestScores(gameName: string) {
+		return await this.redisService.getHighestScore(
+			`leaderboard:game: ${gameName}`,
+		);
 	}
 }

@@ -1,7 +1,6 @@
 import {
 	Entity,
 	PrimaryGeneratedColumn,
-	Column,
 	CreateDateColumn,
 	ManyToOne,
 	OneToOne,
@@ -16,10 +15,8 @@ export class Leaderboard {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
-	gameId: number;
-
-	@ManyToOne(() => Game)
+	@OneToOne(() => Game)
+	@JoinColumn()
 	game: Game;
 
 	@OneToOne(() => User)
