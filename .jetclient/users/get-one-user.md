@@ -6,7 +6,7 @@ sortWeight = 4000000
 id = '170028f1-405d-467e-9e64-6597bdd3b245'
 
 [auth.bearer]
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcyNDM4NzI1NywiZXhwIjoxNzI0Mzg4MTU3fQ.2JWda90zHkiePvItOSHH9-Eh1-eF0_0IaB3hFZGeUMQ'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQyODAxOSwiZXhwIjoxNzI0NDI4OTE5fQ.y-o7Z4z3-xkvMOAejEcD_QEtf98IwYktiFVWowDrQSw'
 
 [body]
 type = 'JSON'

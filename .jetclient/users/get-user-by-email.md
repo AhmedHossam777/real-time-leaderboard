@@ -10,13 +10,8 @@ key = 'email'
 value = 'dod@email.com'
 
 [auth.bearer]
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcyNDM3MzcyMiwiZXhwIjoxNzI0Mzc0NjIyfQ.qBRePMr3PB9gMIK33QazRrlaczjVP_R6H8f8CjrUzbo'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQyODAxOSwiZXhwIjoxNzI0NDI4OTE5fQ.y-o7Z4z3-xkvMOAejEcD_QEtf98IwYktiFVWowDrQSw'
 
 [body]
 type = 'JSON'
-raw = '''
-{
-  "email": "test@email.com",
-  "password": "123456"
-}'''
 ```

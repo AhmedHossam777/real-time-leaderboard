@@ -29,10 +29,10 @@ export class UserController {
 		return this.userService.create(createUserDto);
 	}
 
-	@Get(':id')
-	findOne(@Param('id') id: string) {
-		return this.userService.findOne(+id);
-	}
+	// @Get(':id')
+	// findOne(@Param('id') id: string) {
+	// 	return this.userService.findOne(+id);
+	// }
 
 	@Get('')
 	find(@Query('email') email: string) {
@@ -49,8 +49,15 @@ export class UserController {
 		return this.userService.remove(+id);
 	}
 
+	@Get('me')
+	getCurrentUser(@CurrentUser() user: User) {
+		return user;
+	}
+
 	@Get('/ranking')
 	getRanking(@Query('gameName') gameName: string, @CurrentUser() user: User) {
+		console.log(`username: ${user.username}`);
+
 		return this.userService.getRanking(gameName, user.username);
 	}
 }

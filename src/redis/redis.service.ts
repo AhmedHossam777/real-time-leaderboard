@@ -48,11 +48,8 @@ export class RedisService {
 		return leaderboard;
 	}
 
-	async getRanking(leaderboardKey: string, username: string) {
-		const rank = await this.client.zrevrank(leaderboardKey, `user:${username}`);
-		if (rank === null) {
-			throw new Error('User not found in leaderboard');
-		}
+	async getRanking(leaderboardKey: string, member: string) {
+		const rank = await this.client.zrevrank(leaderboardKey, member);
 		return rank + 1;
 	}
 

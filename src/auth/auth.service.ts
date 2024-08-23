@@ -95,6 +95,7 @@ export class AuthService {
 	}
 
 	async signout(userId: number) {
+		console.log(userId);
 		await this.redisService.deleteRefreshToken(userId);
 		return 'signout success';
 	}

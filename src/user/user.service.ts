@@ -43,23 +43,18 @@ export class UserService {
 	}
 
 	async getRanking(gameName: string, username: string) {
-		console.log('getRanking called with:', { gameName, username });
-
-		if (!gameName || !username) {
-			console.error('Invalid parameters:', { gameName, username });
-			throw new NotFoundException('Invalid parameters');
-		}
-
 		const leaderboardKey = `leaderboard:game: ${gameName}`;
 		console.log('leaderboardKey:', leaderboardKey);
+		console.log('username:', username);
 
-		try {
-			const rank = await this.redisService.getRanking(leaderboardKey, username);
-			console.log('Rank:', rank);
-			return rank;
-		} catch (error) {
-			console.error('Error fetching rank:', error);
-			throw new NotFoundException('user not found');
-		}
+		const rank = await this.redisService.getRanking(
+			leaderboardKey,
+			`user:${username}`,
+		);
+
+		console.log(rank);
+
+		console.log('Rank:', rank);
+		return rank;
 	}
 }

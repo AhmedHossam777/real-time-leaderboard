@@ -34,6 +34,7 @@ export class AuthController {
 	@UseGuards(JWTAuthGuard)
 	@Post('/logout')
 	async logout(@CurrentUser() user: User) {
+		console.log('user:', user);
 		return this.authService.signout(user.id);
 	}
 }

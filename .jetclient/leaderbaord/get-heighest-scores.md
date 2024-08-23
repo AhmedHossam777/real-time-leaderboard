@@ -10,8 +10,4 @@ token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDM3OD
 
 [body]
 type = 'JSON'
-raw = '''
-{
-  "score": 200
-}'''
 ```
