@@ -1,9 +1,9 @@
 ```toml
-name = 'get-one-game'
+name = 'get-one-game -by-name'
 method = 'GET'
 url = 'http://localhost:3000/game?name=valorant'
-sortWeight = 3000000
-id = '78a9e5a7-9c5b-46ce-aa44-50cd7b3cfe52'
+sortWeight = 7000000
+id = '1ad2c8d5-a196-4317-a583-e926cc497956'
 
 [[queryParams]]
 key = 'name'

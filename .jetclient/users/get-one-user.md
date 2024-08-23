@@ -1,13 +1,9 @@
 ```toml
 name = 'get-one-user'
 method = 'GET'
-url = 'http://localhost:3000/user?email=test@email.com'
-sortWeight = 3000000
-id = '3ca169fe-637a-48f4-a2e4-7de7a64f63ec'
-
-[[queryParams]]
-key = 'email'
-value = 'test@email.com'
+url = 'http://localhost:3000/user/1'
+sortWeight = 4000000
+id = '170028f1-405d-467e-9e64-6597bdd3b245'
 
 [body]
 type = 'JSON'

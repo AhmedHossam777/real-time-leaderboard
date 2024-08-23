@@ -14,17 +14,14 @@ export class UserService {
 		return await this.repo.save(user);
 	}
 
-	async findAll() {
-		return await this.repo.find();
-	}
-
 	async findOne(id: number) {
 		if (!id) throw new NotFoundException('user not found');
 		return await this.repo.findOneBy({ id });
 	}
 
 	async find(email: string) {
-		return await this.repo.findOneBy({ email });
+		const users = await this.repo.find({ where: { email } });
+		return users[0];
 	}
 
 	async update(id: number, updateUserDto: UpdateUserDto) {

@@ -15,12 +15,12 @@ export class GameService {
 		return await this.gameRepo.save(game);
 	}
 
-	async findAll() {
-		return await this.gameRepo.find();
-	}
-
 	async findOne(id: number) {
 		return await this.gameRepo.findOneBy({ id });
+	}
+
+	async findOneByName(name: string) {
+		return await this.gameRepo.findOneBy({ name });
 	}
 
 	async update(id: number, updateGameDto: UpdateGameDto) {
