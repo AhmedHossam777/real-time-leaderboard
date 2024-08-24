@@ -9,7 +9,8 @@ id = 'a3173b0d-07f1-4b21-b44c-885c94eb108c'
 type = 'JSON'
 raw = '''
 {
-  "name": "FIFA",
-  "description": "a sick game"
+  "name": "COD",
+  "description": "a shooter game",
+  
 }'''
 ```

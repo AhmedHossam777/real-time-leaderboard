@@ -16,6 +16,9 @@ export class Game {
 	@Column({ unique: true })
 	name: string;
 
+	@Column({ default: 0, nullable: true })
+	gameRating: number;
+
 	@Column({ nullable: true })
 	description: string;
 
