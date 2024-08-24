@@ -1,31 +1,39 @@
-# Project Name
+# Real-Time Leaderboard
 
 ## Description
 
-This project is a web application built with NestJS, TypeScript, and JavaScript. It includes several modules such as authentication, user management, game management, and leaderboard functionality.
+The Real-Time Leaderboard project is a backend service designed to manage and display real-time leaderboards for various games. It provides a comprehensive set of features for user authentication, game management, and score tracking. Users can sign up, log in, and submit their scores, which are then used to generate dynamic leaderboards. The service includes robust authentication and authorization mechanisms, ensuring secure access to protected routes. It leverages technologies like TypeScript, NestJS, TypeORM, PostgreSQL, and Redis to deliver high performance and scalability. Additionally.
+## Project URL
+https://roadmap.sh/projects/realtime-leaderboard-system
 
-## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-  - [Auth](#auth)
-  - [User](#user)
-  - [Score](#score)
-  - [Game](#game)
-  - [Leaderboard](#leaderboard)
-- [Contributing](#contributing)
-- [License](#license)
+## Features
+
+- User authentication and authorization
+- User management (create, update, delete, find)
+- Game management (create, update, delete, find)
+- Score submission and retrieval
+- Real-time leaderboard for games
+- Protected routes with JWT authentication
+- Refresh tokens for session management
+- Redis integration for caching
+- PostgreSQL database for persistent storage
+- TypeORM for object-relational mapping
+- User ranking for games
+- Top players report for games
+- leaderboard for games
+- top players report for games within a date range
+- top players across all leaderboards
 
 ## Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/AhmedHossam777/your-repo-name.git
+    git clone https://github.com/AhmedHossam777/leaderboard-backend
     ```
 2. Navigate to the project directory:
     ```bash
-    cd your-repo-name
+    cd real-time-leaderboard
     ```
 3. Install the dependencies:
     ```bash
@@ -39,6 +47,16 @@ This project is a web application built with NestJS, TypeScript, and JavaScript.
     npm run start:dev
     ```
 2. The application will be running at `http://localhost:3000`.
+
+## Technology
+
+- **TypeScript**
+- **NestJS**
+- **TypeORM**
+- **PostgreSQL**
+- **Redis**
+- **Passport**
+- **JWT**
 
 ## API Endpoints
 
@@ -66,22 +84,21 @@ This project is a web application built with NestJS, TypeScript, and JavaScript.
 
 ### User
 
-- **POST /user**
-  - Description: Create a new user.
-  - Body: `CreateUserDto`
-
 - **GET /user**
   - Description: Find a user by email.
   - Query: `email`
+  - Headers: `Authorization: Bearer <token>`
 
 - **PATCH /user/:id**
   - Description: Update a user by ID.
   - Params: `id`
   - Body: `UpdateUserDto`
+  - Headers: `Authorization: Bearer <token>`
 
 - **DELETE /user/:id**
   - Description: Delete a user by ID.
   - Params: `id`
+  - Headers: `Authorization: Bearer <token>`
 
 - **GET /user/me**
   - Description: Get the current logged-in user.
@@ -95,22 +112,25 @@ This project is a web application built with NestJS, TypeScript, and JavaScript.
 - **GET /user/ranking/:gameName**
   - Description: Get the top players for a specific game.
   - Params: `gameName`
+  - Headers: `Authorization: Bearer <token>`
 
 ### Score
 
 - **POST /score**
-    - Description: Submit a score for a game.
-    - Body: `CreateScoreDto`
-    - Query: `gameName`
-    - Headers: `Authorization: Bearer <token>`
+  - Description: Submit a score for a game.
+  - Body: `CreateScoreDto`
+  - Query: `gameName`
+  - Headers: `Authorization: Bearer <token>`
 
 - **GET /score**
-    - Description: Get the highest scores for a game.
-    - Query: `gameName`
+  - Description: Get the highest scores for a game.
+  - Query: `gameName`
+  - Headers: `Authorization: Bearer <token>`
 
 - **GET /score/top-players**
-    - Description: Get a report of the top players for a game within a date range.
-    - Query: `gameId`, `startDate`, `endDate`, `limit`
+  - Description: Get a report of the top players for a game within a date range.
+  - Query: `gameId`, `startDate`, `endDate`, `limit`
+  - Headers: `Authorization: Bearer <token>`
 
 ### Game
 
@@ -139,10 +159,12 @@ This project is a web application built with NestJS, TypeScript, and JavaScript.
 
 - **GET /leaderboard**
   - Description: Get the highest scores.
+  - Headers: `Authorization: Bearer <token>`
 
 - **GET /leaderboard/game**
   - Description: Get the leaderboard for a specific game.
   - Query: `gameName`
+  - Headers: `Authorization: Bearer <token>`
 
 ## Contributing
 
