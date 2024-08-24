@@ -60,4 +60,9 @@ export class UserController {
 
 		return this.userService.getRanking(gameName, user.username);
 	}
+
+	@Get('/ranking/:gameName')
+	getRankingByUsername(@Param('gameName') gameName: string) {
+		return this.userService.getTopPlayers(gameName);
+	}
 }

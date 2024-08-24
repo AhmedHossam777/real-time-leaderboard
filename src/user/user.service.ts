@@ -57,4 +57,17 @@ export class UserService {
 		console.log('Rank:', rank);
 		return rank;
 	}
+
+	async getTopPlayers(gameName: string) {
+		const leaderboardKey = `leaderboard:game: ${gameName}`;
+		const leaderboard = await this.redisService.getLeaderboard(leaderboardKey);
+		console.log(leaderboard);
+		return leaderboard.map((player, index) => {
+			return {
+				rank: index + 1,
+				username: player[0].split(':')[1],
+				score: player[1],
+			};
+		});
+	}
 }

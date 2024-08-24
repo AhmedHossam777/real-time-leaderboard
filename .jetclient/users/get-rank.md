@@ -10,7 +10,7 @@ key = 'gameName'
 value = 'FIFA'
 
 [auth.bearer]
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQ0MDI5MywiZXhwIjoxNzI0NDQxMTkzfQ.MOT_wZx36ue0nUViJ-NhqdHk0DSVY4CirwgMhcTEfUc'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQ0MjAyNCwiZXhwIjoxNzI0NDQyOTI0fQ.s6_vvIAzWLClDXgRGcGsKDLZxIedMHa2ed78G-BY4Ao'
 
 [body]
 type = 'JSON'

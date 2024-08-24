@@ -57,4 +57,31 @@ export class ScoreService {
 			`leaderboard:game: ${gameName}`,
 		);
 	}
+
+	async getTopPlayersReport(
+		gameId: string,
+		startDate: Date,
+		endDate: Date,
+		limit: number,
+	) {
+		return await this.scoreRepo
+			.createQueryBuilder('score')
+			.select(
+				'score.userId,' +
+					' SUM(score.score) as totalScore,' +
+					' COUNT(score.id) as totalGames,' +
+					' ROUND(AVG(score.score),2) as averageScore,' +
+					' game.name as gameName',
+			)
+			.innerJoin('score.game', 'game')
+			.where('score.gameId = :gameId', { gameId })
+			.andWhere('score.createdAt BETWEEN :startDate AND :endDate', {
+				startDate,
+				endDate,
+			})
+			.groupBy('score.userId, game.name')
+			.orderBy('totalScore', 'DESC')
+			.limit(limit)
+			.getRawMany();
+	}
 }
