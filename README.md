@@ -29,7 +29,7 @@ https://roadmap.sh/projects/realtime-leaderboard-system
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/AhmedHossam777/leaderboard-backend
+    git clone https://github.com/AhmedHossam777/real-time-leaderboard
     ```
 2. Navigate to the project directory:
     ```bash
@@ -174,4 +174,3 @@ https://roadmap.sh/projects/realtime-leaderboard-system
 4. Commit your changes (`git commit -m 'Add some feature'`).
 5. Push to the branch (`git push origin feature-branch`).
 6. Open a pull request.
-
