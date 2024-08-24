@@ -22,5 +22,5 @@ key = 'limit'
 value = '10'
 
 [auth.bearer]
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQ3MTk1NywiZXhwIjoxNzI0NDcyODU3fQ.ro2gtH8mD-l0BvB-M3-qolvIzSgUstK8tHB92bkod0I'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQ4NjI5MywiZXhwIjoxNzI0NDg3MTkzfQ.GlR905A9BJKYOTPL7pkkULkVYrq1J3dMyVjet4CwHz0'
 ```

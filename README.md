@@ -1,73 +1,158 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Project Name
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a web application built with NestJS, TypeScript, and JavaScript. It includes several modules such as authentication, user management, game management, and leaderboard functionality.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+  - [Auth](#auth)
+  - [User](#user)
+  - [Score](#score)
+  - [Game](#game)
+  - [Leaderboard](#leaderboard)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/AhmedHossam777/your-repo-name.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd your-repo-name
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-## Running the app
+## Usage
 
-```bash
-# development
-$ npm run start
+1. Start the development server:
+    ```bash
+    npm run start:dev
+    ```
+2. The application will be running at `http://localhost:3000`.
 
-# watch mode
-$ npm run start:dev
+## API Endpoints
 
-# production mode
-$ npm run start:prod
-```
+### Auth
 
-## Test
+- **POST /auth/signup**
+  - Description: Sign up a new user.
+  - Body: `CreateUserDto`
 
-```bash
-# unit tests
-$ npm run test
+- **POST /auth/login**
+  - Description: Log in a user.
+  - Body: `LoginDto`
 
-# e2e tests
-$ npm run test:e2e
+- **GET /auth/protected**
+  - Description: Access a protected route.
+  - Headers: `Authorization: Bearer <token>`
 
-# test coverage
-$ npm run test:cov
-```
+- **POST /auth/refreshToken**
+  - Description: Refresh the authentication token.
+  - Body: `{ "refreshToken": "string" }`
 
-## Support
+- **POST /auth/logout**
+  - Description: Log out the current user.
+  - Headers: `Authorization: Bearer <token>`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### User
 
-## Stay in touch
+- **POST /user**
+  - Description: Create a new user.
+  - Body: `CreateUserDto`
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **GET /user**
+  - Description: Find a user by email.
+  - Query: `email`
+
+- **PATCH /user/:id**
+  - Description: Update a user by ID.
+  - Params: `id`
+  - Body: `UpdateUserDto`
+
+- **DELETE /user/:id**
+  - Description: Delete a user by ID.
+  - Params: `id`
+
+- **GET /user/me**
+  - Description: Get the current logged-in user.
+  - Headers: `Authorization: Bearer <token>`
+
+- **GET /user/ranking**
+  - Description: Get the ranking of the current user for a specific game.
+  - Query: `gameName`
+  - Headers: `Authorization: Bearer <token>`
+
+- **GET /user/ranking/:gameName**
+  - Description: Get the top players for a specific game.
+  - Params: `gameName`
+
+### Score
+
+- **POST /score**
+    - Description: Submit a score for a game.
+    - Body: `CreateScoreDto`
+    - Query: `gameName`
+    - Headers: `Authorization: Bearer <token>`
+
+- **GET /score**
+    - Description: Get the highest scores for a game.
+    - Query: `gameName`
+
+- **GET /score/top-players**
+    - Description: Get a report of the top players for a game within a date range.
+    - Query: `gameId`, `startDate`, `endDate`, `limit`
+
+### Game
+
+- **POST /game**
+  - Description: Create a new game.
+  - Body: `CreateGameDto`
+
+- **GET /game/:id**
+  - Description: Find a game by ID.
+  - Params: `id`
+
+- **GET /game**
+  - Description: Find a game by name.
+  - Query: `name`
+
+- **PATCH /game/:id**
+  - Description: Update a game by ID.
+  - Params: `id`
+  - Body: `UpdateGameDto`
+
+- **DELETE /game/:id**
+  - Description: Delete a game by ID.
+  - Params: `id`
+
+### Leaderboard
+
+- **GET /leaderboard**
+  - Description: Get the highest scores.
+
+- **GET /leaderboard/game**
+  - Description: Get the leaderboard for a specific game.
+  - Query: `gameName`
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License.
