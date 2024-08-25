@@ -25,4 +25,7 @@ export class Leaderboard {
 
 	@ManyToOne(() => Score)
 	score: Score;
+
+	@CreateDateColumn()
+	createdAt: Date;
 }
