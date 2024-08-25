@@ -27,5 +27,5 @@ export class Leaderboard {
 	score: Score;
 
 	@CreateDateColumn()
-	createdAt: Date;
+	createdAt	: Date;
 }
