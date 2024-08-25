@@ -10,7 +10,7 @@ key = 'gameName'
 value = 'Valo'
 
 [auth.bearer]
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTcyNDQyODYyNSwiZXhwIjoxNzI0NDI5NTI1fQ.LtpVxzc-eJcBy76GqycI8AjKqVYZBvtv4dR-9mN8-Us'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyNDU3MDc5MiwiZXhwIjoxNzI0NTcxNjkyfQ.2hxigpoZbgCjy9oDUiqQfh5yt5MceAZc4MBILk53kAk'
 
 [body]
 type = 'JSON'
