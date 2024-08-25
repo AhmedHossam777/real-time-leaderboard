@@ -1,4 +1,5 @@
 # Real-Time Leaderboard
+![image](https://github.com/user-attachments/assets/ec454cf1-f4fc-477b-97a5-1d9f92061e29)
 
 ## Description
 
@@ -51,6 +52,7 @@ https://roadmap.sh/projects/realtime-leaderboard-system
 ## Technology
 
 - **TypeScript**
+- **Node.js**
 - **NestJS**
 - **TypeORM**
 - **PostgreSQL**
