@@ -24,6 +24,9 @@ export class User {
 	@Column()
 	password: string;
 
+	@Column({default: false})
+	admin : boolean
+
 	@OneToMany(() => Score, (score) => score.user)
 	scores: Score[];
 

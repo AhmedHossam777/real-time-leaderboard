@@ -51,6 +51,7 @@ https://roadmap.sh/projects/realtime-leaderboard-system
 ## Technology
 
 - **TypeScript**
+- **Node.js**
 - **NestJS**
 - **TypeORM**
 - **PostgreSQL**
