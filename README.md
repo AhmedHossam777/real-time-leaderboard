@@ -36,6 +36,29 @@ https://roadmap.sh/projects/realtime-leaderboard-system
     ```bash
     cd real-time-leaderboard
     ```
+3. Setting Up a `.env` File
+
+To configure the environment variables for the project, set up a `.env` file with the following parameters:
+
+```
+DB_HOST=your_database_host
+DB_PORT=your_database_port
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+DB_DATABASE=your_database_name
+
+JWT_SECRET=your_jwt_secret
+ACCESSTOKEN_LIFETIME=access_token_lifetime_in_seconds
+REFRESHTOKEN_LIFETIME=refresh_token_lifetime_in_seconds
+REFRESH_TOKEN_SECRET=your_refresh_token_secret
+
+REDIS_PASSWORD=your_redis_password
+REDIS_HOST=your_redis_host
+REDIS_PORT=your_redis_port
+```
+
+Make sure to replace the placeholders with your actual credentials and values for the environment variables.
+    
 3. Install the dependencies:
     ```bash
     npm install
