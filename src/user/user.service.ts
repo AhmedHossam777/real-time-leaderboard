@@ -18,9 +18,9 @@ export class UserService {
 		return await this.repo.save(user);
 	}
 
-	async findOne(id: number) {
-		if (!id) throw new NotFoundException('user not found');
-		return await this.repo.findOneBy({ id });
+	findOne(id: number) {
+		if (!id) throw new NotFoundException('please provide id');
+		return this.repo.findOneBy({ id });
 	}
 
 	async find(email: string) {
