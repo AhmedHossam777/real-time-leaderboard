@@ -40,7 +40,7 @@ https://roadmap.sh/projects/realtime-leaderboard-system
 
 To configure the environment variables for the project, set up a `.env` file with the following parameters:
 
-```
+```env
 DB_HOST=your_database_host
 DB_PORT=your_database_port
 DB_USERNAME=your_database_username
@@ -191,29 +191,6 @@ Make sure to replace the placeholders with your actual credentials and values fo
   - Query: `gameName`
   - Headers: `Authorization: Bearer <token>`
 
-## Environment Variables
-
-Create a `.env` file in the root directory of the project and add the following environment variables:
-
-```dotenv
-DB_HOST=your_database_host
-DB_PORT=your_database_port
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
-
-JWT_SECRET=your_jwt_secret
-REFRESH_TOKEN_SECRET=your_refresh_token_secret
-
-ACCESSTOKEN_LIFETIME=your_access_token_lifetime
-REFRESHTOKEN_LIFETIME=your_refresh_token_lifetime
-
-NODE_ENV=development
-
-REDIS_PASSWORD=your_redis_password
-REDIS_HOST=your_redis_host
-REDIS_PORT=your_redis_port
-```
 
 ## Contributing
 
