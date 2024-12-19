@@ -1,0 +1,40 @@
+// Add this code to dbdiagram.io to visualize the ERD
+
+// User entity
+Table User {
+  id int [pk, increment]
+  username varchar
+  email varchar
+  password varchar
+  admin boolean [default: false]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+// Score entity
+Table Score {
+  id int [pk, increment]
+  score int
+  userId int [ref: > User.id]
+  gameId int [ref: > Game.id]
+  createdAt timestamp
+}
+
+// Leaderboard entity
+Table Leaderboard {
+  id int [pk, increment]
+  gameId int [ref: - Game.id]
+  userId int [ref: - User.id]
+  scoreId int [ref: > Score.id]
+  createdAt timestamp
+}
+
+// Game entity
+Table Game {
+  id int [pk, increment]
+  name varchar [unique]
+  gameRating int [default: 0]
+  description varchar
+  createdAt timestamp
+  updatedAt timestamp
+}
