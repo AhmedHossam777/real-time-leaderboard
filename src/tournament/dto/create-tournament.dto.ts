@@ -16,3 +16,4 @@ export class CreateTournamentDto {
 	@IsArray()
 	gameIds: number[];
 }
+, IsArray, IsDate, IsNumber, IsString

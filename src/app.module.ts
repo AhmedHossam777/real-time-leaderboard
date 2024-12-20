@@ -12,6 +12,8 @@ import { ScoreModule } from './score/score.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { TournamentModule } from './tournament/tournament.module';
+import { TournamentModule } from './tournament/tournament.module';
 
 @Module({
 	imports: [
@@ -29,6 +31,7 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 				limit: 10, // number of maximum requests in the TTL window
 			},
 		]),
+		TournamentModule,
 	],
 	controllers: [AppController],
 	providers: [
