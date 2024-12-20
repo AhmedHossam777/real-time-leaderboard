@@ -8,6 +8,7 @@ import { RedisService } from '../redis/redis.service';
 import { FriendRequest } from './entities/friend-request.entity';
 import { Message } from './entities/message.entity';
 import { BadRequestException } from 'src/common/exceptions/application.exceptions';
+import { MessageGateway } from 'src/websocket/message.gateway';
 
 @Injectable()
 export class UserService {
@@ -18,6 +19,7 @@ export class UserService {
 		@InjectRepository(Message)
 		private readonly messageRepo: Repository<Message>,
 		private readonly RedisService: RedisService,
+		private readonly messageGateway: MessageGateway,
 	) {}
 
 	async create(createUserDto: CreateUserDto) {
@@ -161,8 +163,12 @@ export class UserService {
 			receiver: { id: receiverId },
 			content,
 		});
+		const savedMessage = await this.messageRepo.save(message);
 
-		return await this.messageRepo.save(message);
+		// Emit real-time message
+		this.messageGateway.emitNewMessage(savedMessage);
+
+		return savedMessage;
 	}
 
 	async getMessages(userId: number, friendId: number) {
@@ -185,6 +191,9 @@ export class UserService {
 			},
 			{ read: true },
 		);
+
+		// Emit messages read event
+		this.messageGateway.emitMessageRead(friendId, userId);
 	}
 
 	async getUnreadMessageCount(userId: number) {
