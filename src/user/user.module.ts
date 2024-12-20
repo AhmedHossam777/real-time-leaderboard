@@ -4,9 +4,11 @@ import { UserController } from './user.controller';
 import { User } from './entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisService } from '../redis/redis.service';
+import { FriendRequest } from './entities/friend-request.entity';
+import { Message } from './entities/message.entity';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([User])],
+	imports: [TypeOrmModule.forFeature([User, FriendRequest, Message])],
 	controllers: [UserController],
 	providers: [UserService, RedisService],
 })
