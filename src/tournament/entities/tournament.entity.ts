@@ -37,10 +37,3 @@ export class Tournament {
 	@CreateDateColumn()
 	createdAt: Date;
 }
-,
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn
