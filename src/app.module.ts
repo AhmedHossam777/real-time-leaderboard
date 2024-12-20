@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,6 +11,7 @@ import { GameModule } from './game/game.module';
 import { ScoreModule } from './score/score.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 
 @Module({
 	imports: [
@@ -38,4 +39,10 @@ import { APP_GUARD } from '@nestjs/core';
 		},
 	],
 })
-export class AppModule {}
+export class AppModule {
+	configure(consumer: MiddlewareConsumer) {
+		consumer
+			.apply(LoggerMiddleware)
+			.forRoutes({ path: '*', method: RequestMethod.ALL });
+	}
+}

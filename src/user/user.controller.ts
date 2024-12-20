@@ -13,8 +13,8 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JWTAuthGuard } from '../auth/guards/auth.guard';
-import { Serialize } from '../interceptors/serialize.interceptor';
-import { UserDto } from './dto/user.dto';
+import { Serialize }    from '../common/interceptors/serialize.interceptor';
+import { UserDto }      from './dto/user.dto';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { User } from './entities/user.entity';
 
